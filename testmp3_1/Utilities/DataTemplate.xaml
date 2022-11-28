@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:testmp3_1.ViewModel"
+                    xmlns:view="clr-namespace:testmp3_1.View">
+
+    <DataTemplate DataType="{x:Type vm:HomeVM}">
+        <view:Home />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:PlayerVM}">
+        <view:Player/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:YouTubeVM}">
+        <view:YouTube/>
+    </DataTemplate>
+
+</ResourceDictionary>

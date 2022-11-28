@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Image\folderic.png" />
+    <None Remove="Image\home.png" />
+    <None Remove="Image\loupe.png" />
+    <None Remove="Image\next.png" />
+    <None Remove="Image\pause.png" />
+    <None Remove="Image\play.png" />
+    <None Remove="Image\player_menu.png" />
+    <None Remove="Image\previous.png" />
+    <None Remove="Image\santehn.png" />
+    <None Remove="Image\soundoff.png" />
+    <None Remove="Image\soundon.png" />
+    <None Remove="Image\spotify.png" />
+    <None Remove="Image\stop.png" />
+    <None Remove="Image\youtube.png" />
+    <None Remove="View\folderic.png" />
+    <None Remove="View\home.png" />
+    <None Remove="View\loupe.png" />
+    <None Remove="View\next.png" />
+    <None Remove="View\pause.png" />
+    <None Remove="View\play.png" />
+    <None Remove="View\player_menu.png" />
+    <None Remove="View\previous.png" />
+    <None Remove="View\santehn.png" />
+    <None Remove="View\soundoff.png" />
+    <None Remove="View\soundon.png" />
+    <None Remove="View\spotify.png" />
+    <None Remove="View\stop.png" />
+    <None Remove="View\youtube.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="2.0.9" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Image\folderic.png" />
+    <Resource Include="Image\home.png" />
+    <Resource Include="Image\loupe.png" />
+    <Resource Include="Image\next.png" />
+    <Resource Include="Image\pause.png" />
+    <Resource Include="Image\play.png" />
+    <Resource Include="Image\player_menu.png" />
+    <Resource Include="Image\previous.png" />
+    <Resource Include="Image\santehn.png" />
+    <Resource Include="Image\soundoff.png" />
+    <Resource Include="Image\soundon.png" />
+    <Resource Include="Image\spotify.png" />
+    <Resource Include="Image\stop.png" />
+    <Resource Include="Image\youtube.png" />
+  </ItemGroup>
+
+</Project>
