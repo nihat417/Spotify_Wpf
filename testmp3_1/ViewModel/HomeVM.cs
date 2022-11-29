@@ -23,7 +23,7 @@ class HomeVM : Utilities.ViewModelBase
     void PopulateCollection()
     {
         var client = new RestClient();
-        client.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator("BQBk-UNajjqN03xCq3TPfo3HgSDP9-pTx4Hlk1z9z1iaHGYIOhLooQWNTyXLn9a3eHwaK8_XsBzwvsyZf2kFV5l5cRJ641i-rEcoFkXv_4BxAw_q-eEHiDdqlA6yssEX18deykAWzv99F5llTuqEt8ANXbzJ2_4wITLQihIy6SPlWZItMw0pneRVPlJc66sQM8NtSDY", "Bearer");
+        client.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator("BQBd15MzuaVV4fp0MS4JEl2BSOa4YYcoS5yAfxzDJ49R2p_D9tHE8TbwgEOPtxG_nbM1tv3HyHmgMa42Re7-7eSaNAOVYRydPmXw2Z6T4lpmLbR8aMAa4koHGm64fyPsgcDGioki6WBuy2lqHToaGdHJdeFLZPVLtD_7SF-eBeHhoqSBDbLnGv5lfbPte7rR4Mmg1KQ", "Bearer");
         var request = new RestRequest("https://api.spotify.com/v1/browse/new-releases", Method.Get);
         request.AddHeader("Accept", "application/json");
         request.AddHeader("Content-Type", "application/json");

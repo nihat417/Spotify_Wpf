@@ -1,0 +1,287 @@
+﻿<Window x:Class="testmp3_1.View.UserLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:testmp3_1.View"
+        mc:Ignorable="d"
+        Title="UserLogin" Height="450" Width="800"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
+
+    <Border CornerRadius="12">
+        <Border.Background>
+            <ImageBrush ImageSource="\Image\image.jpg" 
+                        Stretch="Fill"/>
+        </Border.Background>
+        <Border CornerRadius="10"
+            BorderThickness="3"
+                Opacity="0.90">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#52b69a" Offset="0"/>
+                    <GradientStop Color="#216869" Offset="0.75"/>
+                    <GradientStop Color="#52b788" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#2b9348" Offset="0"/>
+                    <GradientStop Color="#216869" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Spotify"
+                               Foreground="DarkGray"
+                               FontFamily="Montserrat"
+                               FontSize="15"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+
+
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="Btnminsize_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                    <Button x:Name="Btnfullscreen"                          
+                            BorderThickness="0"
+
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="Btnfullscreen_Click">
+                        <Image Source="\Image\minimize1.png"
+                               Stretch="UniformToFill"></Image>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="10"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+
+
+
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="3"
+                            Click="Exitbtn_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </Grid>
+
+
+
+                <StackPanel Width="250"
+                                Orientation="Vertical"
+                                Margin="0,15,0,0"
+                                Grid.Row="1">
+                    <Image Source="\Image\spotify.png"
+                           Width="100" Height="100"/>
+
+
+                    <TextBlock Text="SPOTIFY"
+                               Foreground="White"
+                               FontSize="25"
+                               FontFamily="Montserrat"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               Margin="10"/>
+
+                    <TextBox Name="logintextbox"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        materialDesign:HintAssist.Hint="Username"
+                        VerticalAlignment="Top"
+                        materialDesign:HintAssist.HelperText="Helper text"
+                        materialDesign:HintAssist.Foreground="Black"
+                        materialDesign:HintAssist.Background="#52b788"
+                        materialDesign:TextFieldAssist.UnderlineBrush="DarkSeaGreen"
+                        Foreground="White"
+                        CaretBrush="White"
+                        BorderBrush="#80b918"
+                        SelectionBrush="Red">
+                    </TextBox>
+
+
+                    <StackPanel>
+                        <PasswordBox Name="passwordtextbox"
+                                     Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
+                                     materialDesign:HintAssist.HelperText="Not bound password"
+                                     Margin="0,30,0,0"
+                                     materialDesign:HintAssist.Hint="Password"
+                                     materialDesign:TextFieldAssist.HasClearButton="True"
+                                     materialDesign:HintAssist.Foreground="Black"
+                                     materialDesign:HintAssist.Background="#52b788"
+                                     materialDesign:TextFieldAssist.UnderlineBrush="DarkSeaGreen"
+                                     Foreground="White"
+                                     CaretBrush="White"
+                                     BorderBrush="#80b918"
+                                     SelectionBrush="Red"
+                                     />
+                    </StackPanel>
+
+                    <Button x:Name="btnLogin"                          
+                            BorderThickness="0"
+                            Content="LOG IN"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Margin="0,50,0,0"
+                            Click="btnLogin_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#538d22"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0">
+
+                        <TextBlock Text="Don't have accaunt?"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"/>
+
+                        <TextBlock Text="Register"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               Cursor="Hand"
+                               Margin="8,0,0,0"
+                               MouseDown="TextBlock_MouseDown">
+                        </TextBlock>
+
+                    </StackPanel>
+
+
+                </StackPanel>
+
+
+
+
+
+            </Grid>
+
+        </Border>
+    </Border>
+</Window>
+
