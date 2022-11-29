@@ -5,16 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using testmp3_1.Utilities;
+using testmp3_1.View;
 
 namespace testmp3_1.ViewModel;
 
 class NavigationVM : ViewModelBase
 {
-    private object _currentView;
+    private object? _currentView;
+
+    Home _homeView = new();
+    Player _playerView = new();
+    YouTube _youtubeView = new();
+
+
+    public NavigationVM()
+    {
+        HomeCommand = new RelayCommand(Home);
+        PlayerCommand = new RelayCommand(Player);
+        YouTubeCommand = new RelayCommand(YouTube);
+
+        //Primary page
+        CurrentView = new HomeVM();
+    }
+
+
 
     public object CurrentView
     {
-        get { return _currentView; }
+        get { return _currentView!; }
         set { _currentView = value; OnPropertyChanged(); }
     }
 
@@ -23,20 +41,26 @@ class NavigationVM : ViewModelBase
     public ICommand YouTubeCommand { get; set; }
 
 
-    private void Home(object obj) => CurrentView = new HomeVM();
-    private void Player(object obj) => CurrentView = new PlayerVM();
-    private void YouTube(object obj) => CurrentView = new YouTubeVM();
-
-
-
-    public NavigationVM()
+    private void Home(object obj)
     {
-        HomeCommand = new RelayCommand(Home);
-        PlayerCommand = new RelayCommand(Player);
-        YouTubeCommand = new RelayCommand(YouTube);
-        //baslangic seyfeni qyrq
-
-        CurrentView = new HomeVM();
+        if (CurrentView == null)
+            CurrentView = new Home();
+        else
+            CurrentView = _homeView;
+    }
+    private void Player(object obj)
+    {
+        if (CurrentView == null)
+            CurrentView = new Player();
+        else
+            CurrentView = _playerView;
+    }
+    private void YouTube(object obj)
+    {
+        if (CurrentView == null)
+            CurrentView = new YouTube();
+        else
+            CurrentView = _youtubeView;
     }
 }
 

@@ -8,9 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:HomeVM/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
 
 
     <DockPanel>
