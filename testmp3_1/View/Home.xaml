@@ -13,28 +13,69 @@
     </UserControl.DataContext>-->
 
 
-    <DockPanel>
-        <Grid DockPanel.Dock="Top">
+    <Border Margin="10">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="10"
+                Direction="270"
+                ShadowDepth="3"
+                Color="Black" />
+        </Border.Effect>
+
+        <Grid Background="{StaticResource BackgroundColorWindow1}">
+            <DockPanel>
+                <DockPanel
+                    Name="titleBar"
+                    Height="Auto"
+                    Background="Black"
+                    DockPanel.Dock="Top">
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        
+                        FontSize="20"
+                        Foreground="White"
+                        Text="{Binding Title, ElementName=window}" />
+                    
+                </DockPanel>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBox
+                            x:Name="txtSearch"
+                            KeyUp="txtSearch_KeyUp"
+                            Style="{StaticResource TextBoxSearch}"
+                            Template="{StaticResource TextBoxBaseControlTemplate}" />
+                    </StackPanel>
+                    <ListView
+                        x:Name="ListArtist"
+                        Grid.Row="1"
+                        Margin="10"
+                        Background="{StaticResource BackgroundColorWindow2}"
+                        ItemTemplate="{StaticResource ResourceKey=ListArtistTemplate}" />
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Margin="5"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="Powered by" />
+                        <Image Height="48" Source="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" />
+                    </StackPanel>
+                </Grid>
+
+            </DockPanel>
 
 
-
-            <StackPanel VerticalAlignment="Bottom" Margin="8">
-                <TextBlock Text="playlis"
-                           Foreground="White"
-                           FontSize="15"/>
-
-                <TextBlock Text="playlis"
-                           Foreground="White"
-                           FontSize="13"/>
-
-            </StackPanel>
         </Grid>
-
-        <ListView Background="Black" 
-                  ScrollViewer.CanContentScroll="False"
-                  ItemsSource="{Binding Songs}"
-                  Style="{StaticResource ListStyle}">
-
-        </ListView>
-    </DockPanel>
+    </Border>
+    
 </UserControl>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              
              xmlns:local="clr-namespace:testmp3_1"
-             StartupUri="/View/UserLogin.xaml">
+             StartupUri="/View/MainWindow.xaml">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -16,7 +16,8 @@
                 <ResourceDictionary Source="Utilities/DataTemplate.xaml" />
                 <ResourceDictionary Source="Styles/Checkbox_1.xaml" />
                 <ResourceDictionary Source="Styles/Animation.xaml" />
-                <ResourceDictionary Source="Styles/ThemeForApi.xaml" />
+                <ResourceDictionary Source="Styles/StylesApi.xaml" />
+                <ResourceDictionary Source="Styles/ScrollbarStyleDictionary.xaml" />
 
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
