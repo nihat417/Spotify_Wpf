@@ -10,14 +10,15 @@ using System.ComponentModel;
 using System;
 using System.IO;
 using System.Collections.ObjectModel;
-using static MediaToolkit.Model.Metadata;
 
 namespace testmp3_1.View;
 
 public partial class YouTube : UserControl
 {
-    public BackgroundWorker? worker;
+    public BackgroundWorker? Worker;
     public ObservableCollection<string>? YoutubeMusicList { get; set; }
+
+
 
     public YouTube()
     {
@@ -26,18 +27,17 @@ public partial class YouTube : UserControl
 
         YoutubeMusicList = PlayerVM.Musics;
 
-        worker = new BackgroundWorker();
-        worker.DoWork += Do_Work!;
-        worker.ProgressChanged += Progress_Back!;
+        Worker = new BackgroundWorker();
+        Worker.DoWork += Do_Work!;
+        Worker.ProgressChanged += Progress_Back!;
 
-        worker.WorkerSupportsCancellation = false;
-        worker.WorkerReportsProgress = true;
+        Worker.WorkerSupportsCancellation = false;
+        Worker.WorkerReportsProgress = true;
 
     }
 
-    private void progressBar_KeyDown(object sender, KeyEventArgs e)
+    private void txt_KeyDown(object sender, KeyEventArgs e)
     {
-
         if (e.Key == Key.Enter)
         {
             prog.Value = 0;
@@ -72,11 +72,12 @@ public partial class YouTube : UserControl
         }
     }
 
-
     public void SaveMP3(YouTubeVideo video)
     {
-        if (!worker!.IsBusy)
-            worker.RunWorkerAsync();
+        if (!Worker!.IsBusy)
+            Worker.RunWorkerAsync();
+
+        Worker.ReportProgress(3);
 
         Dispatcher.Invoke(() =>
         {
@@ -85,11 +86,9 @@ public partial class YouTube : UserControl
 
         File.WriteAllBytes(PlayerVM.Mpath + '\\' + video.FullName, video.GetBytes());
 
-        worker.ReportProgress(10);
-
-
-
         string v = video.FullName.Substring(0, video.FullName.Length - 4);
+
+        Worker.ReportProgress(10);
 
         Dispatcher.Invoke(() =>
         {
@@ -109,13 +108,13 @@ public partial class YouTube : UserControl
                 engine.Convert(inputFile, outputFile);
             }
 
-            worker.ReportProgress(20);
+            Worker.ReportProgress(20);
 
         }
         File.Delete(Path.Combine(PlayerVM.Mpath!, video.FullName));
 
 
-        worker.WorkerSupportsCancellation = true;
+        Worker.WorkerSupportsCancellation = true;
 
 
         Dispatcher.Invoke(() =>
@@ -127,7 +126,6 @@ public partial class YouTube : UserControl
         });
     }
 
-
     public void Progress_Back(object sender, ProgressChangedEventArgs e)
     {
         Dispatcher.Invoke(() =>
@@ -136,18 +134,17 @@ public partial class YouTube : UserControl
         });
     }
 
-
     void Do_Work(object sender, EventArgs e)
     {
         int i = 0;
         while (true)
         {
             i++;
-            if (worker!.WorkerSupportsCancellation)
+            if (Worker!.WorkerSupportsCancellation)
             {
                 i = 100;
-                worker.ReportProgress(i);
-                worker.WorkerSupportsCancellation = false;
+                Worker.ReportProgress(i);
+                Worker.WorkerSupportsCancellation = false;
 
                 Dispatcher.Invoke(() =>
                 {
@@ -157,13 +154,13 @@ public partial class YouTube : UserControl
                     
                 });
 
-                worker.Dispose();
+                Worker.Dispose();
                 break;
             }
             else
             {
-                Thread.Sleep(3000);
-                worker.ReportProgress(i / 2);
+                Thread.Sleep(2000);
+                Worker.ReportProgress(i / 2);
             }
         }
     }
@@ -193,4 +190,5 @@ public partial class YouTube : UserControl
             }
         }
     }
+
 }

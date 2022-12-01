@@ -15,7 +15,7 @@
         <vm:PlayerVM/>
     </UserControl.DataContext>
 
-    <Border CornerRadius="0,20,20,0">
+    <Border CornerRadius="10,15,0,0">
         <Grid>
             <Grid.RowDefinitions>
 
@@ -409,10 +409,13 @@
                 </Button>
 
 
-                <Slider
-                    Margin="12,6,12,0"
+                <Canvas HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Height="40" Width="80" Grid.Column="7">
+                    <Slider
+                    Margin="12,6,12,6"
                     Name="volm"
-                    Grid.Column="7"
+                    Height="60"
+                    Width="120"
                     Orientation="Horizontal"
                     Style="{StaticResource MaterialDesignDiscreteSlider}"
                     TickPlacement="TopLeft"
@@ -422,6 +425,7 @@
                     Value="{Binding Volume}"
                     Foreground="YellowGreen"  
                     />
+                </Canvas>
 
                 <CheckBox
                     Name="playCheck"
@@ -474,16 +478,6 @@
                     </Grid.ColumnDefinitions>
 
 
-
-                    <TextBox Grid.Column="0"
-                          materialDesign:HintAssist.Hint="Floating Hint"
-                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          VerticalAlignment="Center" />
-
-                    <Button Grid.Column="1" Background="Transparent" BorderBrush="Transparent">
-                        <Image Source="/Image/loupe.png" />
-                    </Button>
-
                     <Button Grid.Column="2" 
                             BorderBrush="Transparent"
                             Background="Transparent"
@@ -501,7 +495,7 @@
                           Drop="listBox_Drop"
                           AllowDrop="True"
                           Foreground="Black" 
-                          Grid.ColumnSpan="2"/>
+                          Grid.ColumnSpan="2" FontSize="18"/>
             </Grid>
         </Grid>
     </Border>

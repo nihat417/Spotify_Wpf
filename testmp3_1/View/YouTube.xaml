@@ -8,22 +8,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450"  d:DesignWidth="622"  Style="{StaticResource Page_Style}">
 
-    <!--<UserControl.DataContext>
-        <vm:YouTubeVM/>
-    </UserControl.DataContext>-->
 
-
-    <Border CornerRadius="0,20,20,0">
+    <Border CornerRadius="10,15,0,0">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
 
             <TextBox materialDesign:HintAssist.Hint="Enter Link"
                      Name="txt"
-                     KeyDown="progressBar_KeyDown"
+                     KeyDown="txt_KeyDown"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      VerticalAlignment="Center" 
                      materialDesign:HintAssist.Foreground="White"
@@ -51,13 +47,15 @@
 
 
             <ProgressBar Grid.Row="2"
-                         Margin="0,30,0,0"
+                         Margin="0,0,0,0"
                          Name="prog"
-                         Width="400"
-                         Height="30"
-                         Background="Black"
+                         Width="60"
+                         Height="60"
+                         Style="{StaticResource MaterialDesignCircularProgressBar}"
+                         Background="Transparent"
                          Foreground="GreenYellow" 
                          />
+
             <Label Grid.Row="2"
                    Name="messageLabel"
                    HorizontalAlignment="Left" 

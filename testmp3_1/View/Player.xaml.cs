@@ -15,7 +15,7 @@ public partial class Player : UserControl
         InitializeComponent();
     }  
 
-    private void slider_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    private void slider_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         var PlayerVM = (PlayerVM)DataContext;
         if (PlayerVM!.Player.HasAudio)
@@ -40,7 +40,7 @@ public partial class Player : UserControl
     private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         var PlayerVM = (PlayerVM)DataContext;
-        if (PlayerVM.flag)
+        if (PlayerVM._flag)
         {
             if (PlayerVM!.Player.HasAudio)
             {
@@ -70,4 +70,6 @@ public partial class Player : UserControl
             }
         }
     }
+
+
 }

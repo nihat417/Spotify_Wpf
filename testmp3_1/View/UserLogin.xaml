@@ -100,7 +100,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
-                            Click="Btnfullscreen_Click">
+                            Click="Btnfullscreen_Click" HorizontalAlignment="Left" Width="25">
                         <Image Source="\Image\minimize1.png"
                                Stretch="UniformToFill"></Image>
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace testmp3_1.Models;
 
@@ -10,49 +6,49 @@ public class SpotifySearch
 {
     public class ExternalUrls
     {
-        public string? spotify { get; set; }
+        public string? Spotify { get; set; }
     }
 
     public class Followers
     {
-        public object? href { get; set; }
-        public int total { get; set; }
+        public object? Href { get; set; }
+        public int Total { get; set; }
     }
 
     public class ImageSP
     {
-        public int width { get; set; }
-        public string? url { get; set; }
-        public int height { get; set; }
+        public int Width { get; set; }
+        public string? Url { get; set; }
+        public int Height { get; set; }
     }
 
     public class Item
     {
-        public ExternalUrls? external_urls { get; set; }
-        public Followers? followers { get; set; }
-        public List<string>? genres { get; set; }
-        public string? href { get; set; }
-        public string? id { get; set; }
-        public List<ImageSP>? images { get; set; }
-        public string? name { get; set; }
-        public int popularity { get; set; }
-        public string? type { get; set; }
-        public string? uri { get; set; }
+        public ExternalUrls? External_urls { get; set; }
+        public Followers? Followers { get; set; }
+        public List<string>? Genres { get; set; }
+        public string? Href { get; set; }
+        public string? Id { get; set; }
+        public List<ImageSP>? Images { get; set; }
+        public string? Name { get; set; }
+        public int Popularity { get; set; }
+        public string? Type { get; set; }
+        public string? Uri { get; set; }
     }
 
     public class Artists
     {
-        public string? href { get; set; }
-        public List<Item>? items { get; set; }
-        public int limit { get; set; }
-        public string? next { get; set; }
-        public int offset { get; set; }
-        public object? previous { get; set; }
-        public int total { get; set; }
+        public string? Href { get; set; }
+        public List<Item>? Items { get; set; }
+        public int Limit { get; set; }
+        public string? Next { get; set; }
+        public int Offset { get; set; }
+        public object? Previous { get; set; }
+        public int Total { get; set; }
     }
 
     public class SpotifyResult
     {
-        public Artists? artists { get; set; }
+        public Artists? Artists { get; set; }
     }
 }

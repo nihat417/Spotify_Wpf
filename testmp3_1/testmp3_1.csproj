@@ -34,6 +34,8 @@
     <None Remove="Image\TaylorSw.jpg" />
     <None Remove="Image\the-weeknd_d186b_opgh.jpg" />
     <None Remove="Image\youtube.png" />
+    <None Remove="View\1093973.jpg" />
+    <None Remove="View\4790518-middle.png" />
     <None Remove="View\Andro.jpeg" />
     <None Remove="View\AndyP.jpg" />
     <None Remove="View\Eminem-NoAFr.png" />
@@ -43,7 +45,9 @@
     <None Remove="View\image.jpg" />
     <None Remove="View\Jony.jpeg" />
     <None Remove="View\lana_del_rey.jpg" />
+    <None Remove="View\log-out.png" />
     <None Remove="View\loupe.png" />
+    <None Remove="View\minimalist-spotify-art-pm7u7u1c55tgzyhc.jpg" />
     <None Remove="View\next.png" />
     <None Remove="View\patron-Miyagi.jpg" />
     <None Remove="View\pause.png" />
@@ -91,7 +95,6 @@
     <Resource Include="Image\player_menu.png" />
     <Resource Include="Image\previous.png" />
     <Resource Include="Image\RaufFaik.jpg" />
-    <Resource Include="Image\santehn.png" />
     <Resource Include="Image\Santiz.jpg" />
     <Resource Include="Image\soundoff.png" />
     <Resource Include="Image\soundon.png" />
@@ -100,6 +103,10 @@
     <Resource Include="Image\TaylorSw.jpg" />
     <Resource Include="Image\the-weeknd_d186b_opgh.jpg" />
     <Resource Include="Image\youtube.png" />
+    <Resource Include="Image\1093973.jpg" />
+    <Resource Include="Image\4790518-middle.png" />
+    <Resource Include="Image\log-out.png" />
+    <Resource Include="Image\minimalist-spotify-art-pm7u7u1c55tgzyhc.jpg" />
   </ItemGroup>
 
 </Project>

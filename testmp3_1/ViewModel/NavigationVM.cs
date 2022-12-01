@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using testmp3_1.Utilities;
 using testmp3_1.View;
 
+
 namespace testmp3_1.ViewModel;
+
 
 class NavigationVM : ViewModelBase
 {
@@ -25,7 +22,7 @@ class NavigationVM : ViewModelBase
         YouTubeCommand = new RelayCommand(YouTube);
 
         //Primary page
-        CurrentView = new HomeVM();
+        CurrentView = new Home();
     }
 
 

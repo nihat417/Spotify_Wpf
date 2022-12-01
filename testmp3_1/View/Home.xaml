@@ -12,7 +12,7 @@
 
 
     <ScrollViewer>
-        <Border Margin="10">
+        <Border Margin="10,0,0,10">
         <Border.Effect>
             <DropShadowEffect
                 BlurRadius="10"
@@ -34,7 +34,7 @@
                         
                         FontSize="20"
                         Foreground="White"
-                        Text="{Binding Title, ElementName=window}" />
+                        />
 
                 </DockPanel>
 

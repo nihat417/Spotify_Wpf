@@ -17,19 +17,146 @@
     </Window.DataContext>
 
 
+
     <Border CornerRadius="10"
             BorderThickness="3">
 
-        <Border.Background>
-            <SolidColorBrush Color="DarkOliveGreen"/>
-        </Border.Background>
 
 
         <Grid>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.09*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!--Maximize Windows-->
+
+                    <Button x:Name="btnMaximize"                          
+                            BorderThickness="0"
+                            Grid.Column="2"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Width="25" 
+                            Click="Btn_Click">
+                        <Image Source="\Image\minimize1.png"
+                               Stretch="UniformToFill"></Image>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="10"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!--Minimize Button-->
+                    
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Click="Btn_Click"
+                            Grid.Column="1">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!--Exit Button-->
+                    
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Click="Btn_Click"
+                            Grid.Column="3">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                </Grid>
+            </Grid>
+
+
 
             <Border CornerRadius="10,0,0,10"
                     Grid.Column="0">
@@ -39,6 +166,9 @@
                 </Border.Background>
 
                 <StackPanel>
+                    <StackPanel.Background>
+                        <ImageBrush/>
+                    </StackPanel.Background>
 
                     <StackPanel Orientation="Horizontal"
                                 Height="35"
@@ -88,7 +218,7 @@
                         </Grid>
 
                     </Menu:Btn >
-                    
+
                     <!--for Youtube dowland-->
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding YouTubeCommand}"
@@ -102,7 +232,33 @@
                             <Image Source="/Image/youtube.png"
                                    Style="{StaticResource Image_Style}" Grid.ColumnSpan="2" Margin="22,0,0,0" />
 
-                            <TextBlock Text="Youtube Dowland"
+                            <TextBlock Text="Mp3 Downloader"
+                                       Style="{StaticResource Text_Style}" Grid.Column="1" Margin="34,0,0,0" />
+                        </Grid>
+
+                    </Menu:Btn>
+                    
+                    <!--Log out-->
+
+                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                              IsChecked="false" 
+                              x:Name="btnLogOut"
+                              Click="btnLogOut_Click"
+                              >
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="16*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Image/log-out.png"
+                                   Style="{StaticResource Image_Style}" Grid.ColumnSpan="2" Margin="22,0,0,0" >
+                                <Image.OpacityMask>
+                                    <ImageBrush ImageSource="/Image/log-out.png"/>
+                                </Image.OpacityMask>
+                            </Image>
+
+                            <TextBlock Text="Log Out"
                                        Style="{StaticResource Text_Style}" Grid.Column="1" Margin="34,0,0,0" />
                         </Grid>
 
@@ -112,12 +268,17 @@
             </Border>
 
 
-            <Border Grid.Column="1">
+            <Border Grid.Column="1" Grid.Row="1" Background="DarkOliveGreen" Panel.ZIndex="-1">
 
-                <ContentControl x:Name="Pages"
-                                Content="{Binding CurrentView}" 
-                                Margin="0,20,0,0"/>
+
+                <ContentControl
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        x:Name="Pages"
+                        Content="{Binding CurrentView}" 
+                        Margin="0,65,0,0"/>
             </Border>
+
         </Grid>
     </Border>
 

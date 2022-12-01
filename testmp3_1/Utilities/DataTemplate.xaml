@@ -10,9 +10,5 @@
     <DataTemplate DataType="{x:Type vm:PlayerVM}">
         <view:Player/>
     </DataTemplate>
-
-    <DataTemplate DataType="{x:Type vm:YouTubeVM}">
-        <view:YouTube/>
-    </DataTemplate>
-
+    
 </ResourceDictionary>

@@ -201,25 +201,6 @@
                     </TextBox>
 
 
-
-
-                    <TextBox
-                         Name="EmailTb"
-                        Margin="0,30,0,0"
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                        materialDesign:HintAssist.Hint="GmaiL"
-                        VerticalAlignment="Top"
-                        materialDesign:HintAssist.HelperText="Helper text"
-                        materialDesign:HintAssist.Foreground="Black"
-                        materialDesign:HintAssist.Background="#52b788"
-                        materialDesign:TextFieldAssist.UnderlineBrush="DarkSeaGreen"
-                        Foreground="White"
-                        CaretBrush="White"
-                        BorderBrush="#80b918"
-                        SelectionBrush="Red">
-                    </TextBox>
-
-
                     <StackPanel>
                         <PasswordBox  Name="PasswordTb"
                                      Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"

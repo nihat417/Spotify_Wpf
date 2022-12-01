@@ -1,34 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using testmp3_1.View;
 
-namespace testmp3_1
+namespace testmp3_1;
+
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+    bool normalized = true;
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    public MainWindow()
+    {
+        InitializeComponent();
+    }
+
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.LeftButton == MouseButtonState.Pressed)
+            DragMove();
+    }
+
+    private void Btn_Click(object sender, RoutedEventArgs e)
+    {
+        var btn = sender as Button;
+
+        if(btn == btnMinimize)
+            WindowState = WindowState.Minimized;
+        else if(btn == btnMaximize) 
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                DragMove();
+            if (normalized == true)
+            {
+                WindowState = WindowState.Maximized;
+                normalized = false;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+                normalized = true;
+            }
         }
+        else if(btn == btnClose)
+            Application.Current.Shutdown();
+    }
+
+    private void btnLogOut_Click(object sender, RoutedEventArgs e)
+    {
+        UserLogin user = new();
+        Close();
+        user.Show();
     }
 }

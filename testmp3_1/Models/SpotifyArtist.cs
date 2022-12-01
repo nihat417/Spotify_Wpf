@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace testmp3_1.Models;
+﻿namespace testmp3_1.Models;
 
 public class SpotifyArtist
 {
