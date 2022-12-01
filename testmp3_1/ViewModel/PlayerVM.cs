@@ -36,6 +36,8 @@ class PlayerVM : ViewModelBase
     private bool _paused = false;
     private bool _mute = true;
     public bool flag = true;
+    public bool _buttonsEnable = false;
+    public bool _animationEnable = false;
 
     private ICommand? _onClickMute;
     private ICommand? onClickPrev;
@@ -61,6 +63,32 @@ class PlayerVM : ViewModelBase
 
         Timer!.Tick += Timer_Tick;
         Timer!.Interval = new TimeSpan(0);
+    }
+
+    public bool ButtonEnable 
+    { 
+        get
+        {
+            return _buttonsEnable;
+        }
+        set
+        {
+            _buttonsEnable = value;
+            OnPropertyChanged("ButtonEnable");
+        }
+    }
+
+    public bool AnimationEnable
+    {
+        get
+        {
+            return _animationEnable;
+        }
+        set
+        {
+            _animationEnable = value;
+            OnPropertyChanged("AnimationEnable");
+        }
     }
 
     public ICommand OnClickBrowsButton
@@ -272,7 +300,7 @@ class PlayerVM : ViewModelBase
             _selectedMP3 = value;
 
 
-            SelectedIndex = Musics.IndexOf(_selectedMP3!);
+            SelectedIndex = Musics!.IndexOf(_selectedMP3!);
 
             Player.Open(new Uri(Path.Combine(MusicPath!, _selectedMP3!)));
 
@@ -287,18 +315,24 @@ class PlayerVM : ViewModelBase
                 SliderMaximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
 
                 if (_paused)
+                {
                     Player.Play();
+                    AnimationEnable = true;
+                }
                 else
+                {
                     Player.Pause();
+                    AnimationEnable = false;
+                }
             }
 
-
+            ButtonEnable = true;
 
             OnPropertyChanged("SelectedMP3");
         }
     }
 
-    public ObservableCollection<string> ListMP3
+    public ObservableCollection<string>? ListMP3
     {
         get { return Musics; }
 
@@ -338,6 +372,7 @@ class PlayerVM : ViewModelBase
             _paused = true;
             Player.Stop();
             Timer.Stop();
+            AnimationEnable = false;
         }
     }
 
@@ -390,9 +425,15 @@ class PlayerVM : ViewModelBase
             }
 
             if (_paused)
+            {
                 Player.Play();
+                AnimationEnable = true;
+            }
             else
+            {
                 Player.Pause();
+                AnimationEnable = false;
+            }
         }
     }
 
@@ -412,7 +453,7 @@ class PlayerVM : ViewModelBase
         if (0 <= SelectedIndex - 1 && SelectedIndex >= 0)
         {
             --SelectedIndex;
-            string song = Musics[SelectedIndex];
+            string song = Musics![SelectedIndex];
             Player.Open(new Uri(Path.Combine(MusicPath!, song)));
 
 
@@ -431,9 +472,15 @@ class PlayerVM : ViewModelBase
             }
 
             if (_paused)
+            {
                 Player.Play();
+                AnimationEnable = true;
+            }
             else
+            {
                 Player.Pause();
+                AnimationEnable = false;
+            }
         }
     }
 
@@ -444,16 +491,16 @@ class PlayerVM : ViewModelBase
             if (!_paused)
             {
                 _paused = true;
-
                 Timer.Start();
-
                 Player.Play();
+                AnimationEnable = true;
             }
             else
             {
                 _paused = false;
                 Player.Pause();
                 Timer.Stop();
+                AnimationEnable = false;
             }
         }
     }

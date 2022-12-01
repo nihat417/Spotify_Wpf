@@ -16,9 +16,9 @@
     <Border CornerRadius="0,20,20,0">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
             </Grid.RowDefinitions>
 
             <TextBox materialDesign:HintAssist.Hint="Enter Link"
@@ -30,14 +30,39 @@
                                              Foreground="White"
                         CaretBrush="White"/>
 
+            <ListView Grid.Row="1"
+                      ItemsSource="{Binding YoutubeMusicList, Mode=Default}"
+                      Name="listBox"
+                      AllowDrop="True"
+                      Foreground="Black" 
+                      PreviewMouseRightButtonDown="listBox_PreviewMouseRightButtonDown"
+                      
+                      >
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem 
+                            Header="_delete"
+                            Click="MenuItem_Click" 
+                            />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+
+
 
             <ProgressBar Grid.Row="2"
+                         Margin="0,30,0,0"
                          Name="prog"
                          Width="400"
                          Height="30"
                          Background="Black"
                          Foreground="GreenYellow" 
                          />
+            <Label Grid.Row="2"
+                   Name="messageLabel"
+                   HorizontalAlignment="Left" 
+                   Margin="200,6,0,0" 
+                   VerticalAlignment="Top"/>
         </Grid>
     </Border>
 

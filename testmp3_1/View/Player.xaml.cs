@@ -13,7 +13,7 @@ public partial class Player : UserControl
     public Player()
     {
         InitializeComponent();
-    }
+    }  
 
     private void slider_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {

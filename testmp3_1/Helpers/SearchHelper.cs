@@ -14,7 +14,7 @@ namespace testmp3_1.Helpers;
 
 public static class SearchHelper
 {
-    public static Token token { get; set; }
+    public static Token? token { get; set; }
 
     public static async Task GetTokenAsync()
     {
@@ -44,18 +44,18 @@ public static class SearchHelper
     public static SpotifyResult SearchArtistOrSong(string searchWord)
     {
         var client = new RestClient("https://api.spotify.com/v1/search");
-        client.AddDefaultHeader("Authorization", $"Bearer {token.access_token}");
+        client.AddDefaultHeader("Authorization", $"Bearer {token?.access_token}");
         var request = new RestRequest($"?q={searchWord}&type=artist", Method.Get);
         var response = client.Execute(request);
 
         if (response.IsSuccessful)
         {
-            var result = JsonConvert.DeserializeObject<SpotifyResult>(response.Content);
-            return result;
+            var result = JsonConvert.DeserializeObject<SpotifyResult>(response.Content!);
+            return result!;
         }
         else
         {
-            return null;
+            return null!;
         }
 
     }

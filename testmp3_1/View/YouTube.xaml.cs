@@ -4,25 +4,25 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Xml.Linq;
 using testmp3_1.ViewModel;
 using VideoLibrary;
 using System.ComponentModel;
 using System;
 using System.IO;
 using System.Collections.ObjectModel;
-using static System.Net.Mime.MediaTypeNames;
+using static MediaToolkit.Model.Metadata;
 
 namespace testmp3_1.View;
 
 public partial class YouTube : UserControl
 {
     public BackgroundWorker? worker;
-    public static ObservableCollection<string>? YoutubeMusicList;
+    public ObservableCollection<string>? YoutubeMusicList { get; set; }
 
     public YouTube()
     {
         InitializeComponent();
+        DataContext = this;
 
         YoutubeMusicList = PlayerVM.Musics;
 
@@ -32,6 +32,7 @@ public partial class YouTube : UserControl
 
         worker.WorkerSupportsCancellation = false;
         worker.WorkerReportsProgress = true;
+
     }
 
     private void progressBar_KeyDown(object sender, KeyEventArgs e)
@@ -43,42 +44,57 @@ public partial class YouTube : UserControl
             string url = txt.Text!;
             txt.IsEnabled = false;
 
-            Thread thread = new Thread(new ThreadStart(() =>
+            try
             {
-                try
+                var youtube = VideoLibrary.YouTube.Default;
+                var vid = youtube.GetVideo(url);
+                string musicName = vid.FullName.Substring(0, vid.FullName.Length - 4);
+                if (!YoutubeMusicList!.Contains($"{musicName}.mp3"))
                 {
-                    var youtube = VideoLibrary.YouTube.Default;
-                    var vid = youtube.GetVideo(url);
-                    if (!YoutubeMusicList!.Contains($"{vid}.mp3"))
-                    {
-                        SaveMP3(vid);
-                    }
-                }
-                catch (Exception)
+                    Thread thread = new Thread(new ThreadStart(() =>
                 {
-                    MessageBox.Show("Url not found");
+                    SaveMP3(vid);
+                }));
+                    thread.Start();
                 }
-
-            }));
-
-            thread.Start();
-
+                else
+                {
+                    messageLabel.Content = "This music has already been added";
+                    txt.Text = string.Empty;
+                    txt.IsEnabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                messageLabel.Content = "Url not found";
+                txt.IsEnabled = true;
+            }
         }
     }
 
 
     public void SaveMP3(YouTubeVideo video)
     {
-
         if (!worker!.IsBusy)
             worker.RunWorkerAsync();
+
+        Dispatcher.Invoke(() =>
+        {
+            messageLabel.Content = "Downloading...";
+        });
 
         File.WriteAllBytes(PlayerVM.Mpath + '\\' + video.FullName, video.GetBytes());
 
         worker.ReportProgress(10);
 
 
+
         string v = video.FullName.Substring(0, video.FullName.Length - 4);
+
+        Dispatcher.Invoke(() =>
+        {
+            messageLabel.Content = "Converting to mp3...";
+        });
 
         if (!PlayerVM.Mpath!.Contains($"{v}.mp3"))
         {
@@ -131,12 +147,14 @@ public partial class YouTube : UserControl
             {
                 i = 100;
                 worker.ReportProgress(i);
-                MessageBox.Show("Download was completed");
                 worker.WorkerSupportsCancellation = false;
 
                 Dispatcher.Invoke(() =>
                 {
+                    MessageBox.Show("Download was completed");
+                    messageLabel.Content = "Download was completed";
                     prog.Value = 0;
+                    
                 });
 
                 worker.Dispose();
@@ -150,4 +168,29 @@ public partial class YouTube : UserControl
         }
     }
 
+    private void listBox_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        MenuItem_Click(sender, e);
+    }
+
+    private void MenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        var menuItem = sender as MenuItem;
+
+        string header = menuItem?.Header.ToString()!;
+        string? name;
+        if (listBox.SelectedItem is not null)
+            name = listBox.SelectedItem.ToString();
+        else
+            name = string.Empty;
+
+        if (header == "_delete")
+        {
+            if (YoutubeMusicList!.Contains(name!))
+            {
+                File.Delete(Path.Combine(PlayerVM.Mpath!, name));
+                YoutubeMusicList.Remove(name);
+            }
+        }
+    }
 }

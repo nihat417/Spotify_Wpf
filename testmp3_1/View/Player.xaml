@@ -87,6 +87,7 @@
 
             <ToggleButton x:Name="Tg_btn"
                       Height="110"
+                      IsChecked="{Binding AnimationEnable}"
                       Width="110"
                       IsEnabled="False"
                       HorizontalAlignment="Center"
@@ -370,6 +371,7 @@
 
                 <Button
                     Name="stop"
+                    IsEnabled="{Binding ButtonEnable}"
                     Grid.Column="2"
                     Background="Transparent"
                     VerticalAlignment="Center"
@@ -382,6 +384,7 @@
 
                 <Button
                     Name="prev"
+                    IsEnabled="{Binding ButtonEnable}"
                     Grid.Column="3"
                     Background="Transparent"
                     VerticalAlignment="Center"
@@ -400,6 +403,7 @@
                     VerticalAlignment="Center"
                     BorderBrush="Transparent" 
                     Command="{Binding OnClickNext}"
+                    IsEnabled="{Binding ButtonEnable}"
                     >
                     <Image Source="/Image/next.png"/>
                 </Button>
@@ -421,6 +425,7 @@
 
                 <CheckBox
                     Name="playCheck"
+                    IsEnabled="{Binding ButtonEnable}"
                     Command="{Binding OnClickPlay}"
                     Grid.Column="5" 
                     Background="Transparent" 
@@ -431,6 +436,7 @@
                     />
 
                 <CheckBox Grid.Column="1"
+                          IsEnabled="{Binding ButtonEnable}"
                           Command="{Binding OnClickMute}"
                           Background="Transparent"
                           VerticalAlignment="Bottom"

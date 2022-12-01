@@ -20,7 +20,7 @@ namespace testmp3_1
         {
             byte b = 0;
             while (b++ < 4)
-                path = Directory.GetParent(path).ToString();
+                path = Directory.GetParent(path)!.ToString();
         }
 
         protected override void OnStartup(StartupEventArgs e)
