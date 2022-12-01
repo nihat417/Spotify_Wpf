@@ -5,14 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:testmp3_1.View"
              xmlns:vm="clr-namespace:testmp3_1.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="622"  Style="{StaticResource Page_Style}">
 
-    <!--<UserControl.DataContext>
+    <UserControl.DataContext>
         <vm:PlayerVM/>
-    </UserControl.DataContext>-->
+    </UserControl.DataContext>
 
     <Border CornerRadius="0,20,20,0">
         <Grid>
@@ -267,8 +268,6 @@
                                                  To="1.0"
                                                  BeginTime="00:00:00"
                                                  Duration="00:00:01" />
-
-
                                 </Storyboard>
 
                             </BeginStoryboard>
@@ -293,30 +292,63 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Name="label"
-                       Content="music Time"
+                       Content="{Binding FirstClock}"
                        FontSize="15"
                        />
 
 
                 <Slider Name="slider"
-                    Grid.Column="1"
-                    Minimum="0"
-                    VerticalAlignment="Center"
-                    Foreground="YellowGreen" 
-                    ValueChanged="Slider_ValueChanged"
-                    IsMoveToPointEnabled="True"
-                    PreviewMouseLeftButtonDown="Slider_PreviewMouseLeftButtonDown" 
-                    PreviewMouseLeftButtonUp="Slider_PreviewMouseLeftButtonUp" Margin="46,0,74,0" 
-                    />
+                        Grid.Column="1"
+                        Minimum="0"
+                        Maximum="{Binding SliderMaximum}"
+                        Value="{Binding SliderValue, Mode=TwoWay}"
+                        VerticalAlignment="Center"
+                        IsManipulationEnabled="True" 
+                        IsEnabled="True" 
+                        AllowDrop="True"
+                        Foreground="YellowGreen" 
+                        IsMoveToPointEnabled="True"
+                        Margin="46,0,74,0" 
+                        PreviewMouseLeftButtonDown="slider_PreviewMouseLeftButtonDown" 
+                        PreviewMouseLeftButtonUp="slider_PreviewMouseLeftButtonUp" ValueChanged="slider_ValueChanged" 
+                        >
+
+                </Slider>
+
+
 
                 <Label Grid.Column="2"
                        Name="label1"
-                       Content="music Time"
+                       Content="{Binding SecondClock}"
                        FontSize="15"
                        />
-
-
             </Grid>
+
+
+            <Canvas Grid.Row="0" Margin="20">
+                <Label 
+                        BorderThickness="2"
+                        Name="tbfilname"
+                        Grid.Column="0"
+                        Content="{Binding SelectedMP3}"
+                        FontSize="15"
+                        FontWeight="Bold">
+                    <Label.Triggers>
+                        <EventTrigger RoutedEvent="TextBlock.Loaded">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation    
+                                        Storyboard.TargetProperty="(Canvas.Left)" 
+                                        From="-30" To="600" Duration="0:0:4" 
+                                        RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Canvas>
 
 
 
@@ -327,40 +359,14 @@
                     <ColumnDefinition Width="230"/>
                     <ColumnDefinition Width="60"/>
                     <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="22"/>
+                    <ColumnDefinition Width="38"/>
                     <ColumnDefinition Width="60"/>
                     <ColumnDefinition Width="60"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Canvas 
-                    VerticalAlignment="Stretch" 
-                    HorizontalAlignment="Stretch"
-                        >
-                    <Label 
-                        BorderThickness="2"
-                        Canvas.Bottom="10"
-                        Name="tbfilname"
-                        Grid.Column="0"
-                        Content="Namemus"
-                        FontSize="15"
-                        FontWeight="Bold">
-                        <Label.Triggers>
-                            <EventTrigger RoutedEvent="TextBlock.Loaded">
-                                <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation    
-                                        Storyboard.TargetProperty="(Canvas.Left)" 
-                                        From="600" To="-600" Duration="0:0:6" 
-                                        RepeatBehavior="Forever"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger.Actions>
-                            </EventTrigger>
-                        </Label.Triggers>
-                    </Label>
-                </Canvas>
+
 
                 <Button
                     Name="stop"
@@ -368,7 +374,7 @@
                     Background="Transparent"
                     VerticalAlignment="Center"
                     BorderBrush="Transparent"
-                    Click="Click_Stop"
+                    Command="{Binding OnClickStop}"
                     >
                     <Image Source="/Image/stop.png"/>
                 </Button>
@@ -379,8 +385,8 @@
                     Grid.Column="3"
                     Background="Transparent"
                     VerticalAlignment="Center"
-                    BorderBrush="Transparent"
-                    Click="Button_Next_Prev"
+                    BorderBrush="Transparent" Grid.ColumnSpan="2"
+                    Command ="{Binding OnClickPrev}"
                     >
                     <Image Source="/Image/previous.png"/>
                 </Button>
@@ -389,11 +395,11 @@
 
                 <Button
                     Name="next"
-                    Grid.Column="5"
+                    Grid.Column="6"
                     Background="Transparent"
                     VerticalAlignment="Center"
                     BorderBrush="Transparent" 
-                    Click="Button_Next_Prev"
+                    Command="{Binding OnClickNext}"
                     >
                     <Image Source="/Image/next.png"/>
                 </Button>
@@ -402,34 +408,35 @@
                 <Slider
                     Margin="12,6,12,0"
                     Name="volm"
-                    Grid.Column="6"
+                    Grid.Column="7"
                     Orientation="Horizontal"
                     Style="{StaticResource MaterialDesignDiscreteSlider}"
                     TickPlacement="TopLeft"
                     IsMoveToPointEnabled="True"
                     Minimum="0"
-                    Maximum="50"
-                    Value="25"
-                    Foreground="YellowGreen" 
-                    ValueChanged="Volm_ValueChanged"
+                    Maximum="10"
+                    Value="{Binding Volume}"
+                    Foreground="YellowGreen"  
                     />
 
                 <CheckBox
                     Name="playCheck"
-                    Grid.Column="4" 
+                    Command="{Binding OnClickPlay}"
+                    Grid.Column="5" 
                     Background="Transparent" 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     BorderBrush="Transparent"
                     Style="{StaticResource StylePlayCheckbox}"
-                    Click="Play_Click"/>
+                    />
 
                 <CheckBox Grid.Column="1"
-                    Background="Transparent"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    BorderBrush="Transparent"
-                    Style="{StaticResource StyleSongCheckbox}">
+                          Command="{Binding OnClickMute}"
+                          Background="Transparent"
+                          VerticalAlignment="Bottom"
+                          HorizontalAlignment="Left"
+                          BorderBrush="Transparent"
+                          Style="{StaticResource StyleSongCheckbox}">
                 </CheckBox>
 
 
@@ -443,13 +450,17 @@
 
             <Grid Grid.Row="4"
                   Background="GreenYellow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220*"/>
+                    <ColumnDefinition Width="91*"/>
+                </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="55"/>
@@ -467,26 +478,25 @@
                         <Image Source="/Image/loupe.png" />
                     </Button>
 
-                    <Button Grid.Column="2" BorderBrush="Transparent" Background="Transparent">
+                    <Button Grid.Column="2" 
+                            BorderBrush="Transparent"
+                            Background="Transparent"
+                            Command="{Binding OnClickBrowsButton}">
                         <Image Source="/Image/folderic.png"/>
                     </Button>
                 </Grid>
 
 
                 <ListView Grid.Row="1"
-                          ItemsSource="{Binding Musics, Mode=TwoWay}"
-                          Name="list"
+                          Name="m_listBox"
+                          ItemsSource="{Binding ListMP3}"
+                          SelectedItem="{Binding SelectedMP3}"
+                          SelectedIndex="{Binding SelectedIndex}"
+                          Drop="listBox_Drop"
                           AllowDrop="True"
                           Foreground="Black" 
-                          Drop="list_Drop" 
-                          SelectionChanged="List_SelectionChanged" 
-                          VerticalAlignment="Stretch" 
-                          HorizontalAlignment="Stretch"/>
+                          Grid.ColumnSpan="2"/>
             </Grid>
-
-
-
-
         </Grid>
     </Border>
 </UserControl>

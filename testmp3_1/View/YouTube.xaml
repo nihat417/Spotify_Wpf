@@ -8,9 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450"  d:DesignWidth="622"  Style="{StaticResource Page_Style}">
 
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:YouTubeVM/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
 
 
     <Border CornerRadius="0,20,20,0">
@@ -22,11 +22,22 @@
             </Grid.RowDefinitions>
 
             <TextBox materialDesign:HintAssist.Hint="Enter Link"
+                     Name="txt"
+                     KeyDown="progressBar_KeyDown"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      VerticalAlignment="Center" 
                      materialDesign:HintAssist.Foreground="White"
                                              Foreground="White"
                         CaretBrush="White"/>
+
+
+            <ProgressBar Grid.Row="2"
+                         Name="prog"
+                         Width="400"
+                         Height="30"
+                         Background="Black"
+                         Foreground="GreenYellow" 
+                         />
         </Grid>
     </Border>
 
