@@ -8,12 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <!--<UserControl.DataContext>
-        <vm:HomeVM/>
-    </UserControl.DataContext>-->
 
 
-    <Border Margin="10">
+
+    <ScrollViewer>
+        <Border Margin="10">
         <Border.Effect>
             <DropShadowEffect
                 BlurRadius="10"
@@ -36,7 +35,7 @@
                         FontSize="20"
                         Foreground="White"
                         Text="{Binding Title, ElementName=window}" />
-                    
+
                 </DockPanel>
 
                 <Grid>
@@ -55,6 +54,114 @@
                             Style="{StaticResource TextBoxSearch}"
                             Template="{StaticResource TextBoxBaseControlTemplate}" />
                     </StackPanel>
+
+
+
+                    <Grid Grid.Row="1"
+                          Name="homevv"
+                          Visibility="Visible">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="55"/>
+                            </Grid.RowDefinitions>
+
+                        <Label FontSize="35" 
+                               FontWeight="DemiBold"
+                               FontFamily="Circular" 
+                               Content="Charts of the Week"
+                               Foreground="White"/>
+
+                        <Grid Grid.Row="1" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Grid Grid.Column="0">
+                                <Image Source="/Image/lana_del_rey.jpg"
+                                       Stretch="Fill"
+                                       Width="250"
+                                       Margin="10,0,5,0"/>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Image Source="/Image/the-weeknd_d186b_opgh.jpg"
+                                       Stretch="Fill"
+                                       Width="250"
+                                       Margin="10,0,5,0"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="3">
+                            <Image Source="/Image/Santiz.jpg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                            <Canvas  VerticalAlignment="Center">
+                                <Label  Content="Santiz" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                            </Canvas>
+                        </Grid>
+
+                        <Grid Grid.Row="4">
+                            <Image Source="/Image/patron-Miyagi.jpg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                            <Canvas  VerticalAlignment="Center">
+                                <Label  Content="Miyagi" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                            </Canvas>
+                        </Grid>
+                        
+                        <Grid Grid.Row="5">
+                            <Image Source="/Image/TaylorSw.jpg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                            <Canvas  VerticalAlignment="Center">
+                                <Label  Content="Taylor Swit" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                            </Canvas>
+                        </Grid>
+
+                        <Grid Grid.Row="6">
+                            <Image Source="/Image/RaufFaik.jpg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                            <Canvas  VerticalAlignment="Center">
+                                <Label  Content="Rauf Faik" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                            </Canvas>
+                        </Grid>
+
+                        <Grid Grid.Row="7">
+                            <Image Source="/Image/Eminem-NoAFr.png"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                            <Canvas  VerticalAlignment="Center">
+                                <Label  Content="Eminem" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                            </Canvas>
+                        </Grid>
+
+                            <Grid Grid.Row="8">
+                                <Image Source="/Image/AndyP.jpg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                                <Canvas  VerticalAlignment="Center">
+                                    <Label  Content="Andy Panda" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                                </Canvas>
+                            </Grid>
+                        
+                            <Grid Grid.Row="9">
+                                <Image Source="/Image/Jony.jpeg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                                <Canvas  VerticalAlignment="Center">
+                                    <Label  Content="Jony" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                                </Canvas>
+                            </Grid>
+
+                            <Grid Grid.Row="10">
+                                <Image Source="/Image/Andro.jpeg"  Height="40" Width="40" HorizontalAlignment="Left"/>
+                                <Canvas  VerticalAlignment="Center">
+                                    <Label  Content="Andro" FontSize="14" Foreground="White" Canvas.Left="50" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Top="-14"/>
+                                </Canvas>
+                            </Grid>
+
+                        </Grid>
+
+
                     <ListView
                         x:Name="ListArtist"
                         Grid.Row="1"
@@ -67,7 +174,7 @@
                         Margin="5"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="Powered by" />
+                        <TextBlock VerticalAlignment="Center" Text="Powered by" Foreground="White" />
                         <Image Height="48" Source="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" />
                     </StackPanel>
                 </Grid>
@@ -77,5 +184,6 @@
 
         </Grid>
     </Border>
-    
+    </ScrollViewer>
+
 </UserControl>

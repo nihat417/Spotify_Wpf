@@ -8,37 +8,57 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Image\Andro.jpeg" />
+    <None Remove="Image\AndyP.jpg" />
+    <None Remove="Image\Eminem-NoAFr.png" />
     <None Remove="Image\folderic.png" />
     <None Remove="Image\forregpage2.jpg" />
     <None Remove="Image\home.png" />
     <None Remove="Image\image.jpg" />
+    <None Remove="Image\Jony.jpeg" />
+    <None Remove="Image\lana_del_rey.jpg" />
     <None Remove="Image\loupe.png" />
     <None Remove="Image\next.png" />
+    <None Remove="Image\patron-Miyagi.jpg" />
     <None Remove="Image\pause.png" />
     <None Remove="Image\play.png" />
     <None Remove="Image\player_menu.png" />
     <None Remove="Image\previous.png" />
+    <None Remove="Image\RaufFaik.jpg" />
     <None Remove="Image\santehn.png" />
+    <None Remove="Image\Santiz.jpg" />
     <None Remove="Image\soundoff.png" />
     <None Remove="Image\soundon.png" />
     <None Remove="Image\spotify.png" />
     <None Remove="Image\stop.png" />
+    <None Remove="Image\TaylorSw.jpg" />
+    <None Remove="Image\the-weeknd_d186b_opgh.jpg" />
     <None Remove="Image\youtube.png" />
+    <None Remove="View\Andro.jpeg" />
+    <None Remove="View\AndyP.jpg" />
+    <None Remove="View\Eminem-NoAFr.png" />
     <None Remove="View\folderic.png" />
     <None Remove="View\forregpage2.jpg" />
     <None Remove="View\home.png" />
     <None Remove="View\image.jpg" />
+    <None Remove="View\Jony.jpeg" />
+    <None Remove="View\lana_del_rey.jpg" />
     <None Remove="View\loupe.png" />
     <None Remove="View\next.png" />
+    <None Remove="View\patron-Miyagi.jpg" />
     <None Remove="View\pause.png" />
     <None Remove="View\play.png" />
     <None Remove="View\player_menu.png" />
     <None Remove="View\previous.png" />
+    <None Remove="View\RaufFaik.jpg" />
     <None Remove="View\santehn.png" />
+    <None Remove="View\Santiz.jpg" />
     <None Remove="View\soundoff.png" />
     <None Remove="View\soundon.png" />
     <None Remove="View\spotify.png" />
     <None Remove="View\stop.png" />
+    <None Remove="View\TaylorSw.jpg" />
+    <None Remove="View\the-weeknd_d186b_opgh.jpg" />
     <None Remove="View\youtube.png" />
   </ItemGroup>
 
@@ -54,21 +74,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Image\Andro.jpeg" />
+    <Resource Include="Image\AndyP.jpg" />
+    <Resource Include="Image\Eminem-NoAFr.png" />
     <Resource Include="Image\folderic.png" />
     <Resource Include="Image\forregpage2.jpg" />
     <Resource Include="Image\home.png" />
     <Resource Include="Image\image.jpg" />
+    <Resource Include="Image\Jony.jpeg" />
+    <Resource Include="Image\lana_del_rey.jpg" />
     <Resource Include="Image\loupe.png" />
     <Resource Include="Image\next.png" />
+    <Resource Include="Image\patron-Miyagi.jpg" />
     <Resource Include="Image\pause.png" />
     <Resource Include="Image\play.png" />
     <Resource Include="Image\player_menu.png" />
     <Resource Include="Image\previous.png" />
+    <Resource Include="Image\RaufFaik.jpg" />
     <Resource Include="Image\santehn.png" />
+    <Resource Include="Image\Santiz.jpg" />
     <Resource Include="Image\soundoff.png" />
     <Resource Include="Image\soundon.png" />
     <Resource Include="Image\spotify.png" />
     <Resource Include="Image\stop.png" />
+    <Resource Include="Image\TaylorSw.jpg" />
+    <Resource Include="Image\the-weeknd_d186b_opgh.jpg" />
     <Resource Include="Image\youtube.png" />
   </ItemGroup>
 

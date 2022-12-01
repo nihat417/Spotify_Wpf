@@ -32,6 +32,10 @@ namespace testmp3_1.View
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
+
+            ListArtist.Visibility = Visibility.Visible;
+            homevv.Visibility = Visibility.Hidden;
+
             if (txtSearch.Text == string.Empty)
             {
                 ListArtist.ItemsSource = null;
