@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using testmp3_1.Models;
 
-namespace testmp3_1;
+namespace testmp3_1.Db;
 
 public class UserDataContext : DbContext
 {

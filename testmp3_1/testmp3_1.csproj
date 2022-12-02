@@ -27,6 +27,7 @@
     <None Remove="Image\RaufFaik.jpg" />
     <None Remove="Image\santehn.png" />
     <None Remove="Image\Santiz.jpg" />
+    <None Remove="Image\settings.png" />
     <None Remove="Image\soundoff.png" />
     <None Remove="Image\soundon.png" />
     <None Remove="Image\spotify.png" />
@@ -57,6 +58,7 @@
     <None Remove="View\RaufFaik.jpg" />
     <None Remove="View\santehn.png" />
     <None Remove="View\Santiz.jpg" />
+    <None Remove="View\settings.png" />
     <None Remove="View\soundoff.png" />
     <None Remove="View\soundon.png" />
     <None Remove="View\spotify.png" />
@@ -96,6 +98,7 @@
     <Resource Include="Image\previous.png" />
     <Resource Include="Image\RaufFaik.jpg" />
     <Resource Include="Image\Santiz.jpg" />
+    <Resource Include="Image\settings.png" />
     <Resource Include="Image\soundoff.png" />
     <Resource Include="Image\soundon.png" />
     <Resource Include="Image\spotify.png" />

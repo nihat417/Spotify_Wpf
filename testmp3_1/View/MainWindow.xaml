@@ -8,7 +8,8 @@
         xmlns:Menu="clr-namespace:testmp3_1.Utilities"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen"
+        Icon="/Image/spotify.png"
+        Title="Spotify" Height="650" Width="1000" WindowStartupLocation="CenterScreen"
         WindowStyle="None" Background="Transparent" AllowsTransparency="True" 
         MouseDown="Window_MouseDown">
 
@@ -188,6 +189,7 @@
                     <!--for homebtn-->
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding HomeCommand}"
+                              Cursor="Hand"
                               IsChecked="True">
 
                         <Grid>
@@ -203,6 +205,7 @@
                     <!--for player-->
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding PlayerCommand}"
+                              Cursor="Hand"
                               IsChecked="false">
 
                         <Grid>
@@ -222,6 +225,7 @@
                     <!--for Youtube dowland-->
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               Command="{Binding YouTubeCommand}"
+                              Cursor="Hand"
                               IsChecked="false">
 
                         <Grid>
@@ -243,6 +247,7 @@
                     <Menu:Btn Style="{StaticResource BtnStyle}"
                               IsChecked="false" 
                               x:Name="btnLogOut"
+                              
                               Click="btnLogOut_Click"
                               >
 

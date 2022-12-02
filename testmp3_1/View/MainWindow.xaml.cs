@@ -45,8 +45,30 @@ public partial class MainWindow : Window
 
     private void btnLogOut_Click(object sender, RoutedEventArgs e)
     {
-        UserLogin user = new();
-        Close();
-        user.Show();
+        string sMessageBoxText = "Do you reallt want exit?";
+        string sCaption = "Log Out";
+
+        MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+        MessageBoxImage icnMessageBox = MessageBoxImage.Question;
+
+        MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+        switch (rsltMessageBox)
+        {
+            case MessageBoxResult.Yes:
+                {
+                    UserLogin user = new();
+                    Close();
+                    user.Show();
+                    break;
+                }
+
+            case MessageBoxResult.No:
+                break;
+        }
+
+
+
+       
     }
 }
