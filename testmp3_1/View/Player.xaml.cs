@@ -13,8 +13,15 @@ public partial class Player : UserControl
     public Player()
     {
         InitializeComponent();
-    }  
+    }
 
+    #region Events
+
+    /// <summary>
+    /// Slider Press Button Event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void slider_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         var PlayerVM = (PlayerVM)DataContext;
@@ -26,6 +33,11 @@ public partial class Player : UserControl
         }
     }
 
+    /// <summary>
+    /// Slider Release Button Event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void slider_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         var PlayerVM = (PlayerVM)DataContext;
@@ -37,6 +49,11 @@ public partial class Player : UserControl
         }
     }
 
+    /// <summary>
+    /// Slider value chang event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         var PlayerVM = (PlayerVM)DataContext;
@@ -52,6 +69,11 @@ public partial class Player : UserControl
         }
     }
 
+    /// <summary>
+    /// List drop event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void listBox_Drop(object sender, DragEventArgs e)
     {
         var PlayerVM = (PlayerVM)DataContext;
@@ -71,5 +93,6 @@ public partial class Player : UserControl
         }
     }
 
+    #endregion
 
 }

@@ -109,4 +109,10 @@
     <Resource Include="Image\minimalist-spotify-art-pm7u7u1c55tgzyhc.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="View\Player.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
 </Project>

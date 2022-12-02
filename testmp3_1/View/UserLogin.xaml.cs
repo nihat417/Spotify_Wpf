@@ -12,18 +12,35 @@ public partial class UserLogin : Window
         InitializeComponent();
     }
 
-    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    #region Events
+
+    /// <summary>
+    /// Mouse Down Event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void window_MouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.LeftButton == MouseButtonState.Pressed)
             DragMove();
     }
 
-    private void Btnminsize_Click(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Minimizer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void btnMinimize_Click(object sender, RoutedEventArgs e)
     {
         WindowState = WindowState.Minimized;
     }
 
-    private void Btnfullscreen_Click(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Maximizer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void btnFullscreen_Click(object sender, RoutedEventArgs e)
     {
         if (normalized == true)
         {
@@ -38,11 +55,21 @@ public partial class UserLogin : Window
 
     }
 
-    private void Exitbtn_Click(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Closer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void exitBtn_Click(object sender, RoutedEventArgs e)
     {
         Application.Current.Shutdown();
     }
 
+    /// <summary>
+    /// logger
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void btnLogin_Click(object sender, RoutedEventArgs e)
     {
         string Username = logintextbox.Text;
@@ -60,15 +87,22 @@ public partial class UserLogin : Window
                 mainWindow.Show();
             }
             else
-                MessageBox.Show("yoxdu bele user");
+                MessageBox.Show("There is no such user");
         }
     }
 
-    private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+    /// <summary>
+    /// Page changer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void textBlock_MouseDown(object sender, MouseButtonEventArgs e)
     {
         Register registerpage = new Register();
-        this.Close();
+        Close();
         registerpage.Show();
     }
+
+    #endregion
 }
 

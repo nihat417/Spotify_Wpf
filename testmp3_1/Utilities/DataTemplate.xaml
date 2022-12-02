@@ -3,10 +3,6 @@
                     xmlns:vm="clr-namespace:testmp3_1.ViewModel"
                     xmlns:view="clr-namespace:testmp3_1.View">
 
-    <DataTemplate DataType="{x:Type vm:HomeVM}">
-        <view:Home />
-    </DataTemplate>
-
     <DataTemplate DataType="{x:Type vm:PlayerVM}">
         <view:Player/>
     </DataTemplate>

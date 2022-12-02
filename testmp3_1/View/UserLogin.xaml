@@ -11,7 +11,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown">
+        MouseDown="window_MouseDown">
 
     <Border CornerRadius="12">
         <Border.Background>
@@ -66,7 +66,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="1"
-                            Click="Btnminsize_Click">
+                            Click="btnMinimize_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -100,7 +100,9 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
-                            Click="Btnfullscreen_Click" HorizontalAlignment="Left" Width="25">
+                            Click="btnFullscreen_Click"
+                            HorizontalAlignment="Left" 
+Width="25">
                         <Image Source="\Image\minimize1.png"
                                Stretch="UniformToFill"></Image>
 
@@ -139,7 +141,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="3"
-                            Click="Exitbtn_Click">
+                            Click="exitBtn_Click">
 
                         <Button.Style>
                             <Style TargetType="Button">
@@ -267,7 +269,7 @@
                                FontFamily="Montserrat"
                                Cursor="Hand"
                                Margin="8,0,0,0"
-                               MouseDown="TextBlock_MouseDown">
+                               MouseDown="textBlock_MouseDown">
                         </TextBlock>
 
                     </StackPanel>

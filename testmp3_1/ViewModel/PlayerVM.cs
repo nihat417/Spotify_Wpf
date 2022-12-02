@@ -12,6 +12,8 @@ namespace testmp3_1.ViewModel;
 
 class PlayerVM : ViewModelBase
 {
+    #region Fields_and_Properties
+
     public static ObservableCollection<string>? Musics;
     public static string? Mpath;
 
@@ -42,8 +44,11 @@ class PlayerVM : ViewModelBase
     private ICommand? onClickNext;
     private ICommand? onClickBrowsButton;
 
+    #endregion
 
-
+    /// <summary>
+    /// Constructor
+    /// </summary>
     public PlayerVM()
     {
         Player = new MediaPlayer();
@@ -51,16 +56,20 @@ class PlayerVM : ViewModelBase
         Musics = new ObservableCollection<string>();
 
         MusicPath = Directory.GetCurrentDirectory();
-
         Folder_Path_Finder_OR_Creater(FolderName);
-
         GetMusics_Form_Folder();
-
 
         Timer!.Tick += Timer_Tick;
         Timer!.Interval = new TimeSpan(0);
     }
 
+    #region Construtor Methods
+
+    /// <summary>
+    /// Timer Ticker
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Timer_Tick(object? sender, EventArgs e)
     {
         _flag = false;
@@ -73,6 +82,10 @@ class PlayerVM : ViewModelBase
         _flag = true;
     }
 
+    /// <summary>
+    /// Folder creater and finder
+    /// </summary>
+    /// <param name="folderName"></param>
     void Folder_Path_Finder_OR_Creater(string folderName)
     {
         string tempPath = string.Empty;
@@ -98,6 +111,9 @@ class PlayerVM : ViewModelBase
         Mpath = MusicPath;
     }
 
+    /// <summary>
+    /// Music files getter
+    /// </summary>
     void GetMusics_Form_Folder()
     {
         string[]? mus = Directory.GetFiles(MusicPath!);
@@ -111,6 +127,13 @@ class PlayerVM : ViewModelBase
             }
     }
 
+    #endregion
+
+    #region Buttons_Values
+
+    /// <summary>
+    /// Buttons enabler
+    /// </summary>
     public bool ButtonEnable 
     { 
         get
@@ -124,6 +147,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Animations enabler
+    /// </summary>
     public bool AnimationEnable
     {
         get
@@ -137,6 +163,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Pause button
+    /// </summary>
     public bool Pause
     {
         get
@@ -150,6 +179,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Started timer
+    /// </summary>
     public string? FirstClock
     {
         get
@@ -163,6 +195,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Last timer
+    /// </summary>
     public string? SecondClock
     {
         get
@@ -176,6 +211,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Slider value
+    /// </summary>
     public double ChangePosition
     {
         get
@@ -189,6 +227,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Volume value
+    /// </summary>
     public double Volume
     {
         get { return _volume = (int)(Player.Volume * 10); }
@@ -199,6 +240,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Slider maximum value
+    /// </summary>
     public double SliderMaximum
     {
         get { return _maximumLimit; }
@@ -210,17 +254,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
-    public ICommand OnClickBrowsButton
-    {
-        get
-        {
-            return onClickBrowsButton ?? (onClickBrowsButton = new RelayCommand((o) =>
-            {
-                ClickBrows();
-            }));
-        }
-    }
-
+    /// <summary>
+    /// Music Slider value
+    /// </summary>
     public double SliderValue
     {
         get { return _slidervalue; }
@@ -232,6 +268,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Selected music index
+    /// </summary>
     public int SelectedIndex
     {
         get
@@ -245,47 +284,27 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Selected music name
+    /// </summary>
     public string? SelectedMP3
     {
         get { return _selectedMP3; }
 
         set
         {
+
             _selectedMP3 = value;
 
-
-            SelectedIndex = Musics!.IndexOf(_selectedMP3!);
-
-            Player.Open(new Uri(Path.Combine(MusicPath!, _selectedMP3!)));
-
-
-            Thread.Sleep(500);
-
-            if (Player.NaturalDuration.HasTimeSpan)
-            {
-                FirstClock = Player.Position.ToString(@"hh\:mm\:ss");
-                SecondClock = Player.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
-
-                SliderMaximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
-
-                if (_paused)
-                {
-                    Player.Play();
-                    AnimationEnable = true;
-                }
-                else
-                {
-                    Player.Pause();
-                    AnimationEnable = false;
-                }
-            }
-
-            ButtonEnable = true;
+            SelectedMp3();
 
             OnPropertyChanged("SelectedMP3");
         }
     }
 
+    /// <summary>
+    /// Music list
+    /// </summary>
     public ObservableCollection<string>? ListMP3
     {
         get { return Musics; }
@@ -297,6 +316,27 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    #endregion
+
+    #region Commands
+
+    /// <summary>
+    /// Music files Brows Button
+    /// </summary>
+    public ICommand OnClickBrowsButton
+    {
+        get
+        {
+            return onClickBrowsButton ?? (onClickBrowsButton = new RelayCommand((o) =>
+            {
+                ClickBrows();
+            }));
+        }
+    }
+
+    /// <summary>
+    /// Mute Click Command
+    /// </summary>
     public ICommand OnClickMute
     {
         get
@@ -308,6 +348,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Play Click Command
+    /// </summary>
     public ICommand OnClickPlay
     {
         get
@@ -319,6 +362,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Stop Click Command
+    /// </summary>
     public ICommand OnClickStop
     {
         get
@@ -330,6 +376,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Next Click Command
+    /// </summary>
     public ICommand OnClickNext
     {
         get
@@ -341,6 +390,9 @@ class PlayerVM : ViewModelBase
         }
     }
 
+    /// <summary>
+    /// Previous Click Command
+    /// </summary>
     public ICommand OnClickPrev
     {
         get
@@ -350,6 +402,45 @@ class PlayerVM : ViewModelBase
                 OnClickPrevButton();
             }));
         }
+    }
+
+    #endregion
+
+    #region Methods
+
+    /// <summary>
+    /// Methods of Commands
+    /// </summary>
+    /// 
+    void SelectedMp3()
+    {
+        SelectedIndex = Musics!.IndexOf(_selectedMP3!);
+
+        Player.Open(new Uri(Path.Combine(MusicPath!, _selectedMP3!)));
+
+
+        Thread.Sleep(500);
+
+        if (Player.NaturalDuration.HasTimeSpan)
+        {
+            FirstClock = Player.Position.ToString(@"hh\:mm\:ss");
+            SecondClock = Player.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
+
+            SliderMaximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+
+            if (_paused)
+            {
+                Player.Play();
+                AnimationEnable = true;
+            }
+            else
+            {
+                Player.Pause();
+                AnimationEnable = false;
+            }
+        }
+
+        ButtonEnable = true;
     }
 
     void ClickMute()
@@ -489,4 +580,6 @@ class PlayerVM : ViewModelBase
             SelectedMP3 = name;
         }
     }
+
+    #endregion
 }

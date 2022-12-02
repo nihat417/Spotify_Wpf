@@ -15,11 +15,16 @@ namespace testmp3_1.View;
 
 public partial class YouTube : UserControl
 {
+    #region Fields and Properties
+
     public BackgroundWorker? Worker;
     public ObservableCollection<string>? YoutubeMusicList { get; set; }
 
+    #endregion
 
-
+    /// <summary>
+    /// Constructor
+    /// </summary>
     public YouTube()
     {
         InitializeComponent();
@@ -36,6 +41,12 @@ public partial class YouTube : UserControl
 
     }
 
+    #region Events
+    /// <summary>
+    /// TextBox KeyDown Event
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void txt_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter)
@@ -72,12 +83,18 @@ public partial class YouTube : UserControl
         }
     }
 
+    #region Youtube_Music_File_Downloader_and_Converter
+
+    /// <summary>
+    /// Music File Download and Converter
+    /// </summary>
+    /// <param name="video"></param>
     public void SaveMP3(YouTubeVideo video)
     {
         if (!Worker!.IsBusy)
             Worker.RunWorkerAsync();
 
-        Worker.ReportProgress(3);
+        Worker.ReportProgress(5);
 
         Dispatcher.Invoke(() =>
         {
@@ -88,7 +105,7 @@ public partial class YouTube : UserControl
 
         string v = video.FullName.Substring(0, video.FullName.Length - 4);
 
-        Worker.ReportProgress(10);
+        Worker.ReportProgress(6);
 
         Dispatcher.Invoke(() =>
         {
@@ -108,7 +125,7 @@ public partial class YouTube : UserControl
                 engine.Convert(inputFile, outputFile);
             }
 
-            Worker.ReportProgress(20);
+            Worker.ReportProgress(15);
 
         }
         File.Delete(Path.Combine(PlayerVM.Mpath!, video.FullName));
@@ -126,6 +143,11 @@ public partial class YouTube : UserControl
         });
     }
 
+    /// <summary>
+    /// BackGround Progress value changer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     public void Progress_Back(object sender, ProgressChangedEventArgs e)
     {
         Dispatcher.Invoke(() =>
@@ -159,11 +181,15 @@ public partial class YouTube : UserControl
             }
             else
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(2500);
                 Worker.ReportProgress(i / 2);
             }
         }
     }
+
+    #endregion
+
+    #region List_Menu_Context_and_File_Deleter
 
     private void listBox_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
     {
@@ -191,4 +217,7 @@ public partial class YouTube : UserControl
         }
     }
 
+    #endregion
+
+    #endregion
 }

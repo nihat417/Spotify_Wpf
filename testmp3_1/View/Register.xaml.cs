@@ -12,11 +12,10 @@ public partial class Register : Window
     public Register()
     {
         InitializeComponent();
-
     }
 
 
-
+    #region Events
 
     private void Window_MouseDown(object sender, MouseButtonEventArgs e)
     {
@@ -87,5 +86,7 @@ public partial class Register : Window
         this.Close();
         loginpage.Show();
     }
+
+    #endregion
 }
 
