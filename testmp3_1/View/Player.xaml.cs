@@ -57,15 +57,17 @@ public partial class Player : UserControl
     private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         var PlayerVM = (PlayerVM)DataContext;
-        if (PlayerVM._flag)
-        {
-            if (PlayerVM!.Player.HasAudio)
-            {
-                PlayerVM!.Player.Position = TimeSpan.FromSeconds(slider.Value);
 
-                PlayerVM.FirstClock = PlayerVM.Player.Position.ToString(@"hh\:mm\:ss");
-                PlayerVM.SecondClock = (PlayerVM.Player.NaturalDuration.TimeSpan - PlayerVM.Player.Position).ToString(@"hh\:mm\:ss");
-            }
+        if (PlayerVM!.Player.HasAudio)
+        {
+            PlayerVM!.Player.Position = TimeSpan.FromSeconds(slider.Value);
+
+            PlayerVM.FirstClock = PlayerVM.Player.Position.ToString(@"hh\:mm\:ss");
+            PlayerVM.SecondClock = (PlayerVM.Player.NaturalDuration.TimeSpan - PlayerVM.Player.Position).ToString(@"hh\:mm\:ss");
+            if (PlayerVM!.SliderValue == PlayerVM!.SliderMaximum)
+                PlayerVM!.AnimationEnable = false;
+            else
+                PlayerVM!.AnimationEnable = true;
         }
     }
 

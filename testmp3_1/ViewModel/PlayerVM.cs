@@ -33,9 +33,9 @@ class PlayerVM : ViewModelBase
 
     private bool _paused = false;
     private bool _mute = true;
-    public bool _flag = true;
     public bool _buttonsEnable = false;
     public bool _animationEnable = false;
+    public bool _playButtonIsChecked = false;
 
     private ICommand? _onClickMute;
     private ICommand? onClickPrev;
@@ -72,14 +72,16 @@ class PlayerVM : ViewModelBase
     /// <param name="e"></param>
     private void Timer_Tick(object? sender, EventArgs e)
     {
-        _flag = false;
         if (Player.NaturalDuration.HasTimeSpan)
         {
             SliderValue = Player.Position.TotalSeconds;
             FirstClock = Player.Position.ToString(@"hh\:mm\:ss");
             SecondClock = (Player.NaturalDuration.TimeSpan - Player.Position).ToString(@"hh\:mm\:ss");
+            if (SliderValue == SliderMaximum)
+                AnimationEnable = false;
+            else
+                AnimationEnable = true;
         }
-        _flag = true;
     }
 
     /// <summary>
@@ -461,6 +463,7 @@ class PlayerVM : ViewModelBase
     {
         if (Player.HasAudio)
         {
+            SliderValue = 0;
             _paused = true;
             Player.Stop();
             Timer.Stop();
