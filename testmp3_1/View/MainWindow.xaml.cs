@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using testmp3_1.Utilities;
 using testmp3_1.View;
+using testmp3_1.ViewModel;
 
 namespace testmp3_1;
 
@@ -24,9 +26,9 @@ public partial class MainWindow : Window
     {
         var btn = sender as Button;
 
-        if(btn == btnMinimize)
+        if (btn == btnMinimize)
             WindowState = WindowState.Minimized;
-        else if(btn == btnMaximize) 
+        else if (btn == btnMaximize)
         {
             if (normalized == true)
             {
@@ -39,13 +41,13 @@ public partial class MainWindow : Window
                 normalized = true;
             }
         }
-        else if(btn == btnClose)
+        else if (btn == btnClose)
             Application.Current.Shutdown();
     }
 
     private void btnLogOut_Click(object sender, RoutedEventArgs e)
     {
-        string sMessageBoxText = "Do you reallt want exit?";
+        string sMessageBoxText = "Do you really want to quit?";
         string sCaption = "Log Out";
 
         MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
@@ -58,6 +60,15 @@ public partial class MainWindow : Window
             case MessageBoxResult.Yes:
                 {
                     UserLogin user = new();
+
+
+                    NavigationVM p = (NavigationVM)DataContext;
+
+                    p?.PLayerMainClass?.mediaPLayer?.Close();
+                    p?.PLayerMainClass?.Timer?.Stop();
+
+                    p?.YouTubeMainClass?.Worker?.Dispose();
+
                     Close();
                     user.Show();
                     break;
@@ -69,6 +80,6 @@ public partial class MainWindow : Window
 
 
 
-       
+
     }
 }

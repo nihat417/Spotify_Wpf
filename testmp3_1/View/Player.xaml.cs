@@ -3,6 +3,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Threading;
 using testmp3_1.ViewModel;
 using Path = System.IO.Path;
 
@@ -10,9 +12,14 @@ namespace testmp3_1.View;
 
 public partial class Player : UserControl
 {
+    public readonly MediaPlayer? mediaPLayer;
+    public readonly DispatcherTimer? Timer;
     public Player()
     {
         InitializeComponent();
+        var vm = (PlayerVM)DataContext;
+        mediaPLayer = vm.Player;
+        Timer = vm.Timer;
     }
 
     #region Events
@@ -58,17 +65,26 @@ public partial class Player : UserControl
     {
         var PlayerVM = (PlayerVM)DataContext;
 
-        if (PlayerVM!.Player.HasAudio)
-        {
-            PlayerVM!.Player.Position = TimeSpan.FromSeconds(slider.Value);
+        if (PlayerVM._flag)
+            if (PlayerVM!.Player.HasAudio)
+            {
+                PlayerVM!.Player.Position = TimeSpan.FromSeconds(slider.Value);
 
-            PlayerVM.FirstClock = PlayerVM.Player.Position.ToString(@"hh\:mm\:ss");
-            PlayerVM.SecondClock = (PlayerVM.Player.NaturalDuration.TimeSpan - PlayerVM.Player.Position).ToString(@"hh\:mm\:ss");
-            if (PlayerVM!.SliderValue == PlayerVM!.SliderMaximum)
-                PlayerVM!.AnimationEnable = false;
-            else
-                PlayerVM!.AnimationEnable = true;
-        }
+                PlayerVM.FirstClock = PlayerVM.Player.Position.ToString(@"hh\:mm\:ss");
+                PlayerVM.SecondClock = (PlayerVM.Player.NaturalDuration.TimeSpan - PlayerVM.Player.Position).ToString(@"hh\:mm\:ss");
+
+                if (PlayerVM!.SliderValue == PlayerVM!.SliderMaximum)
+                {
+                    PlayerVM!.AnimationEnable = false;
+                    PlayerVM!.PlayerChecker = false;
+                }
+
+                if(PlayerVM!.PlayerChecker == true)
+                {
+
+                }
+
+            }
     }
 
     /// <summary>

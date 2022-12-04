@@ -31,13 +31,14 @@ class PlayerVM : ViewModelBase
     private int _selectedMusicIndex = -1;
     private int _volume;
 
-    private bool _paused = false;
-    private bool _mute = true;
+    public bool _flag = true;
     public bool _buttonsEnable = false;
     public bool _animationEnable = false;
     public bool _playButtonIsChecked = false;
+    private bool? _isMute = false;
+    public bool? playerChecker = true;
 
-    private ICommand? _onClickMute;
+    private ICommand? onMuteClick;
     private ICommand? onClickPrev;
     private ICommand? onClickPlay;
     private ICommand? onClickStop;
@@ -63,6 +64,7 @@ class PlayerVM : ViewModelBase
         Timer!.Interval = new TimeSpan(0);
     }
 
+
     #region Construtor Methods
 
     /// <summary>
@@ -72,16 +74,24 @@ class PlayerVM : ViewModelBase
     /// <param name="e"></param>
     private void Timer_Tick(object? sender, EventArgs e)
     {
+        _flag = false;
         if (Player.NaturalDuration.HasTimeSpan)
         {
             SliderValue = Player.Position.TotalSeconds;
             FirstClock = Player.Position.ToString(@"hh\:mm\:ss");
             SecondClock = (Player.NaturalDuration.TimeSpan - Player.Position).ToString(@"hh\:mm\:ss");
             if (SliderValue == SliderMaximum)
+            {
                 AnimationEnable = false;
+                PlayerChecker = false;
+            }
             else
+            {
                 AnimationEnable = true;
+                PlayerChecker = true;
+            };
         }
+        _flag = true;
     }
 
     /// <summary>
@@ -136,8 +146,8 @@ class PlayerVM : ViewModelBase
     /// <summary>
     /// Buttons enabler
     /// </summary>
-    public bool ButtonEnable 
-    { 
+    public bool ButtonEnable
+    {
         get
         {
             return _buttonsEnable;
@@ -146,6 +156,38 @@ class PlayerVM : ViewModelBase
         {
             _buttonsEnable = value;
             OnPropertyChanged("ButtonEnable");
+        }
+    }
+
+    /// <summary>
+    /// Play Button isChecker
+    /// </summary>
+    public bool? PlayerChecker
+    {
+        get
+        {
+            return playerChecker;
+        }
+        set
+        {
+            playerChecker = value;
+            OnPropertyChanged("PlayerChecker");
+        }
+    }
+
+    /// <summary>
+    /// Mute Button isChecker
+    /// </summary>
+    public bool? IsMute 
+    {
+        get
+        {
+            return _isMute;
+        }
+        set
+        {
+            _isMute = value;
+            OnPropertyChanged("IsMute");
         }
     }
 
@@ -162,22 +204,6 @@ class PlayerVM : ViewModelBase
         {
             _animationEnable = value;
             OnPropertyChanged("AnimationEnable");
-        }
-    }
-
-    /// <summary>
-    /// Pause button
-    /// </summary>
-    public bool Pause
-    {
-        get
-        {
-            return _paused;
-        }
-        set
-        {
-            _paused = value;
-            OnPropertyChanged("Pause");
         }
     }
 
@@ -234,10 +260,15 @@ class PlayerVM : ViewModelBase
     /// </summary>
     public double Volume
     {
-        get { return _volume = (int)(Player.Volume * 10); }
+        get 
+        {
+            return _volume = (int)(Player.Volume * 10); 
+        }
         set
         {
-            Player.Volume = value / 10;
+            Player.Volume = (double)value / 10;
+            if (IsMute == true)
+                IsMute = false;
             OnPropertyChanged("Volume");
         }
     }
@@ -339,15 +370,15 @@ class PlayerVM : ViewModelBase
     /// <summary>
     /// Mute Click Command
     /// </summary>
-    public ICommand OnClickMute
+    public ICommand OnMuteClick 
     {
         get
         {
-            return _onClickMute ?? (_onClickMute = new RelayCommand((o) =>
+            return onMuteClick ?? (onMuteClick = new RelayCommand((o) =>
             {
                 ClickMute();
             }));
-        }
+        } 
     }
 
     /// <summary>
@@ -429,8 +460,9 @@ class PlayerVM : ViewModelBase
             SecondClock = Player.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
 
             SliderMaximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+            SliderValue = 0;
 
-            if (_paused)
+            if (PlayerChecker == true)
             {
                 Player.Play();
                 AnimationEnable = true;
@@ -442,20 +474,22 @@ class PlayerVM : ViewModelBase
             }
         }
 
-        ButtonEnable = true;
+        if (!ButtonEnable)
+        {
+            ButtonEnable = true;
+            Timer.Start();
+        }
     }
 
     void ClickMute()
     {
-        if (_mute)
+        if (IsMute == true)
         {
-            _mute = false;
             Player.Volume = 0;
         }
         else
         {
-            _mute = true;
-            Player.Volume = _volume;
+            Player.Volume = (double)_volume / 10;
         }
     }
 
@@ -463,8 +497,8 @@ class PlayerVM : ViewModelBase
     {
         if (Player.HasAudio)
         {
+            PlayerChecker = false;
             SliderValue = 0;
-            _paused = true;
             Player.Stop();
             Timer.Stop();
             AnimationEnable = false;
@@ -489,13 +523,14 @@ class PlayerVM : ViewModelBase
 
 
                 SliderMaximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+                SliderValue = 0;
 
 
                 FirstClock = Player.Position.ToString(@"hh\:mm\:ss");
                 SecondClock = Player.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
             }
 
-            if (_paused)
+            if (PlayerChecker == true)
             {
                 Player.Play();
                 AnimationEnable = true;
@@ -526,12 +561,14 @@ class PlayerVM : ViewModelBase
 
 
                 SliderMaximum = Player.NaturalDuration.TimeSpan.TotalSeconds;
+                SliderValue = 0;
+
 
                 FirstClock = Player.Position.ToString(@"hh\:mm\:ss");
                 SecondClock = Player.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
             }
 
-            if (_paused)
+            if (PlayerChecker == true)
             {
                 Player.Play();
                 AnimationEnable = true;
@@ -548,16 +585,14 @@ class PlayerVM : ViewModelBase
     {
         if (Player.HasAudio)
         {
-            if (!_paused)
+            if (PlayerChecker == true)
             {
-                _paused = true;
                 Timer.Start();
                 Player.Play();
                 AnimationEnable = true;
             }
             else
             {
-                _paused = false;
                 Player.Pause();
                 Timer.Stop();
                 AnimationEnable = false;

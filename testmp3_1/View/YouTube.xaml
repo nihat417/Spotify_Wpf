@@ -17,8 +17,9 @@
                 <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
 
-            <TextBox materialDesign:HintAssist.Hint="Enter Link"
+            <TextBox materialDesign:HintAssist.Hint="Enter Youtube URL"
                      Name="txt"
+                     ToolTip="Press Enter"
                      KeyDown="txt_KeyDown"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      VerticalAlignment="Center" 
@@ -27,6 +28,7 @@
                         CaretBrush="White"/>
 
             <ListView Grid.Row="1"
+                      ToolTip="All Music List"
                       ItemsSource="{Binding YoutubeMusicList, Mode=Default}"
                       Name="listBox"
                       AllowDrop="True"
@@ -47,6 +49,7 @@
 
 
             <ProgressBar Grid.Row="2"
+                         ToolTip="Progress_Bar"
                          Margin="0,0,0,0"
                          Name="prog"
                          Width="60"
@@ -58,6 +61,7 @@
 
             <Label Grid.Row="2"
                    Name="messageLabel"
+                   FontSize="18"
                    HorizontalAlignment="Left" 
                    Margin="200,6,0,0" 
                    VerticalAlignment="Top"/>

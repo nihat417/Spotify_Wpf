@@ -10,9 +10,9 @@ class NavigationVM : ViewModelBase
 {
     private object? _currentView;
 
-    Home _homeView = new();
-    Player _playerView = new();
-    YouTube _youtubeView = new();
+    public Home HomeMainClass = new();
+    public Player PLayerMainClass = new();
+    public YouTube YouTubeMainClass = new();
     
 
     public NavigationVM()
@@ -21,7 +21,6 @@ class NavigationVM : ViewModelBase
         PlayerCommand = new RelayCommand(Player);
         YouTubeCommand = new RelayCommand(YouTube);
         
-
 
         //Primary page
         CurrentView = new Home();
@@ -46,22 +45,21 @@ class NavigationVM : ViewModelBase
         if (CurrentView == null)
             CurrentView = new Home();
         else
-            CurrentView = _homeView;
+            CurrentView = HomeMainClass;
     }
     private void Player(object obj)
     {
         if (CurrentView == null)
             CurrentView = new Player();
         else
-            CurrentView = _playerView;
+            CurrentView = PLayerMainClass;
     }
     private void YouTube(object obj)
     {
         if (CurrentView == null)
             CurrentView = new YouTube();
         else
-            CurrentView = _youtubeView;
+            CurrentView = YouTubeMainClass;
     }
-
 }
 
