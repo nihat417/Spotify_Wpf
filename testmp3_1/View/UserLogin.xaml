@@ -169,16 +169,16 @@ Width="25">
                 </Grid>
 
 
-
-                <StackPanel Width="250"
+                <Grid Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Width="250"
                                 Orientation="Vertical"
                                 Margin="0,15,0,0"
                                 Grid.Row="1">
-                    <Image Source="\Image\spotify.png"
+                        <Image Source="\Image\spotify.png"
                            Width="100" Height="100"/>
 
 
-                    <TextBlock Text="SPOTIFY"
+                        <TextBlock Text="SPOTIFY"
                                Foreground="White"
                                FontSize="25"
                                FontFamily="Montserrat"
@@ -186,7 +186,7 @@ Width="25">
                                HorizontalAlignment="Center"
                                Margin="10"/>
 
-                    <TextBox Name="logintextbox"
+                        <TextBox Name="logintextbox"
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                         materialDesign:HintAssist.Hint="Username"
                         VerticalAlignment="Top"
@@ -198,11 +198,11 @@ Width="25">
                         CaretBrush="White"
                         BorderBrush="#80b918"
                         SelectionBrush="Red">
-                    </TextBox>
+                        </TextBox>
 
 
-                    <StackPanel>
-                        <PasswordBox Name="passwordtextbox"
+                        <StackPanel>
+                            <PasswordBox Name="passwordtextbox"
                                      Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
                                      materialDesign:HintAssist.HelperText="Not bound password"
                                      Margin="0,30,0,0"
@@ -216,9 +216,9 @@ Width="25">
                                      BorderBrush="#80b918"
                                      SelectionBrush="Red"
                                      />
-                    </StackPanel>
+                        </StackPanel>
 
-                    <Button x:Name="btnLogin"                          
+                        <Button x:Name="btnLogin"                          
                             BorderThickness="0"
                             Content="LOG IN"
                             Foreground="White"
@@ -228,41 +228,41 @@ Width="25">
                             Margin="0,50,0,0"
                             Click="btnLogin_Click">
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#538d22"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#28AEED"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#538d22"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#28AEED"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40"
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="150" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                        <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
 
 
-                    <StackPanel Orientation="Horizontal"
+                        <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Margin="0,15,0,0">
 
-                        <TextBlock Text="Don't have accaunt?"
+                            <TextBlock Text="Don't have accaunt?"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"/>
 
-                        <TextBlock Text="Register"
+                            <TextBlock Text="Register"
                                Foreground="White"
                                FontSize="12"
                                FontWeight="Medium"
@@ -270,13 +270,13 @@ Width="25">
                                Cursor="Hand"
                                Margin="8,0,0,0"
                                MouseDown="textBlock_MouseDown">
-                        </TextBlock>
+                            </TextBlock>
+
+                        </StackPanel>
+
 
                     </StackPanel>
-
-
-                </StackPanel>
-
+                </Grid>
 
 
 
