@@ -452,7 +452,7 @@ class PlayerVM : ViewModelBase
         Player.Open(new Uri(Path.Combine(MusicPath!, _selectedMP3!)));
 
 
-        Thread.Sleep(500);
+        Thread.Sleep(513);
 
         if (Player.NaturalDuration.HasTimeSpan)
         {
