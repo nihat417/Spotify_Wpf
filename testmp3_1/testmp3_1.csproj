@@ -8,33 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Image\Andro.jpeg" />
-    <None Remove="Image\AndyP.jpg" />
-    <None Remove="Image\Eminem-NoAFr.png" />
-    <None Remove="Image\folderic.png" />
-    <None Remove="Image\forregpage2.jpg" />
-    <None Remove="Image\home.png" />
-    <None Remove="Image\image.jpg" />
-    <None Remove="Image\Jony.jpeg" />
-    <None Remove="Image\lana_del_rey.jpg" />
-    <None Remove="Image\loupe.png" />
-    <None Remove="Image\next.png" />
-    <None Remove="Image\patron-Miyagi.jpg" />
-    <None Remove="Image\pause.png" />
-    <None Remove="Image\play.png" />
-    <None Remove="Image\player_menu.png" />
-    <None Remove="Image\previous.png" />
-    <None Remove="Image\RaufFaik.jpg" />
-    <None Remove="Image\santehn.png" />
-    <None Remove="Image\Santiz.jpg" />
-    <None Remove="Image\settings.png" />
-    <None Remove="Image\soundoff.png" />
-    <None Remove="Image\soundon.png" />
-    <None Remove="Image\spotify.png" />
-    <None Remove="Image\stop.png" />
-    <None Remove="Image\TaylorSw.jpg" />
-    <None Remove="Image\the-weeknd_d186b_opgh.jpg" />
-    <None Remove="Image\youtube.png" />
     <None Remove="View\1093973.jpg" />
     <None Remove="View\4790518-middle.png" />
     <None Remove="View\Andro.jpeg" />
@@ -77,39 +50,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="RestSharp" Version="108.0.3" />
     <PackageReference Include="VideoLibrary" Version="3.2.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Image\Andro.jpeg" />
-    <Resource Include="Image\AndyP.jpg" />
-    <Resource Include="Image\Eminem-NoAFr.png" />
-    <Resource Include="Image\folderic.png" />
-    <Resource Include="Image\forregpage2.jpg" />
-    <Resource Include="Image\home.png" />
-    <Resource Include="Image\image.jpg" />
-    <Resource Include="Image\Jony.jpeg" />
-    <Resource Include="Image\lana_del_rey.jpg" />
-    <Resource Include="Image\loupe.png" />
-    <Resource Include="Image\next.png" />
-    <Resource Include="Image\patron-Miyagi.jpg" />
-    <Resource Include="Image\pause.png" />
-    <Resource Include="Image\play.png" />
-    <Resource Include="Image\player_menu.png" />
-    <Resource Include="Image\previous.png" />
-    <Resource Include="Image\RaufFaik.jpg" />
-    <Resource Include="Image\Santiz.jpg" />
-    <Resource Include="Image\settings.png" />
-    <Resource Include="Image\soundoff.png" />
-    <Resource Include="Image\soundon.png" />
-    <Resource Include="Image\spotify.png" />
-    <Resource Include="Image\stop.png" />
-    <Resource Include="Image\TaylorSw.jpg" />
-    <Resource Include="Image\the-weeknd_d186b_opgh.jpg" />
-    <Resource Include="Image\youtube.png" />
-    <Resource Include="Image\1093973.jpg" />
-    <Resource Include="Image\4790518-middle.png" />
-    <Resource Include="Image\log-out.png" />
-    <Resource Include="Image\minimalist-spotify-art-pm7u7u1c55tgzyhc.jpg" />
   </ItemGroup>
 
   <ItemGroup>
