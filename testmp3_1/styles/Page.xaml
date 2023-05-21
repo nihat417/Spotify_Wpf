@@ -3,16 +3,13 @@
 
     <Style x:Key="Page_Style"
            TargetType="{x:Type UserControl}">
-
         <Setter Property="RenderTransform">
             <Setter.Value>
                 <TranslateTransform X="0"
                                     Y="50" />
             </Setter.Value>
         </Setter>
-
         <Style.Triggers>
-
             <Trigger Property="Visibility"
                      Value="Collapsed">
 
