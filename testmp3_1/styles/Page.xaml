@@ -18,9 +18,7 @@
 
                 <Setter Property="Opacity"
                         Value="0" />
-
             </Trigger>
-
             <EventTrigger RoutedEvent="Loaded">
                 <BeginStoryboard>
                     <Storyboard>
@@ -36,9 +34,7 @@
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
-
         </Style.Triggers>
-
     </Style>
 
 
