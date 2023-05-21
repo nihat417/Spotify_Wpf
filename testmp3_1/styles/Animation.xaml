@@ -12,45 +12,30 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-
                         <Trigger Property="IsMouseOver"
                                      Value="True">
-
                             <Setter Property="Background"
                                         TargetName="border"
                                         Value="#A9C220" />
-
                         </Trigger>
-
                         <Trigger Property="IsChecked"
                                      Value="True">
-
                             <Setter Property="Background"
                                         TargetName="border"
                                         Value="#A9C220" />
-
                         </Trigger>
-
                         <MultiTrigger>
-
                             <MultiTrigger.Conditions>
-
                                 <Condition Property="IsMouseOver"
                                                Value="True" />
-
                                 <Condition Property="IsChecked"
                                                Value="False" />
-
                             </MultiTrigger.Conditions>
-
                             <Setter Property="Background"
                                         TargetName="border"
                                         Value="#FF5231" />
-
                         </MultiTrigger>
-
                     </ControlTemplate.Triggers>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
