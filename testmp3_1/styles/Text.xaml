@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="Text_Style"
            TargetType="TextBlock">
-
         <Setter Property="FontFamily"
                 Value="/Fonts/#Rubik" />
         <Setter Property="VerticalAlignment"
@@ -15,7 +14,6 @@
                 Value="18" />
         <Setter Property="Margin"
                 Value="70,0,0,0" />
-
     </Style>
 
 </ResourceDictionary>
